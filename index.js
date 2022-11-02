@@ -1,17 +1,64 @@
+// Runtime: 0(n)
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+const seenNumbers = {};
+
+for (const number of array) { 
+  const complement = target - number;
+  if (seenNumbers[complement]) return true;
+  seenNumbers[number] = true;
+}
+  return false
 }
 
+// function hasTargetSum(array, target) {
+//   for (let i = 0; i < array.length; i++) {
+// // n steps
+//   const complement = target - array[i];
+//   for (let j = i + 1; j < array.length; j++){
+// // n * n steps
+//  if (array[j] === complement) return true;
+//   }
+// }
+//   return false;
+// }
 /* 
   Write the Big O time complexity of your function here
+  Runtime: O(n^2)
+  Space: 0(n)
 */
 
 /* 
+seenNumbers = {
+1: true
+2: true
+3: true
+
+
+}
+
+
   Add your pseudocode here
+  pseudocode for second version of code that was passing the tests
+ Create an object to keep track of numbers we've already seen
+ Iterate through each number in the array
+ For the current number, identify compliment that adds to the target (comp = target - number)
+ Check if any key on our object is the complement, if so return true
+ Otherwise, add that number to the object
+ if I reach the end of the array, return false
+
+Remaining pseudocode for code that was passing
+ Iterate through the rest of the array
+ Check if any number is our compliment
+ If so, return true
+ If I reach the end of the array, return false
 */
 
 /*
   Add written explanation of your solution here
+  Make a function called hasTargetSum that checks if two numbers from the 
+  array add up to some target number. For example, if I have an array [1,2,3,4] and
+  the target is 6, I should return true because 2 and 4 add to 6. For each number check
+  if there's a number that adds to the target.
 */
 
 // You can run `node index.js` to view these console logs
